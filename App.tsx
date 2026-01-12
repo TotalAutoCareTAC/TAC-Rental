@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Tenant, PaymentRecord, TenantCalculations } from './types';
 import { SummaryCards } from './components/SummaryCards';
+import { FinancialInsights } from './components/FinancialInsights';
 import { PaymentModal } from './components/PaymentModal';
 import { TenantModal } from './components/TenantModal';
 import { calculateTenantData, formatCurrency, generateId } from './utils/calculations';
@@ -137,7 +138,7 @@ const App: React.FC = () => {
           <div className="flex items-center gap-5 group">
             <Logo />
             <div className="flex flex-col">
-              <h1 className="text-3xl sm:text-4xl font-black tracking-tighter uppercase italic bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 dark:from-indigo-400 dark:via-blue-300 dark:to-purple-400 hover:scale-[1.02] transition-transform cursor-default">
+              <h1 className="text-3xl sm:text-4xl font-black tracking-tighter uppercase italic bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 dark:from-indigo-400 dark:via-blue-300 dark:to-purple-400 hover:scale-[1.02] transition-transform cursor-default text-shadow-sm">
                 TAC Rental
               </h1>
               <div className="flex items-center gap-2 mt-0.5">
@@ -310,6 +311,8 @@ const App: React.FC = () => {
             </div>
           ))}
         </div>
+
+        {tenantStats.length > 0 && <FinancialInsights stats={tenantStats} />}
 
         <footer className="mt-16 py-10 text-center border-t border-slate-200 dark:border-slate-800">
           <p className="text-slate-400 dark:text-slate-600 text-[10px] font-black uppercase tracking-[0.5em]">
